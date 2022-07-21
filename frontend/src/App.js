@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+import PersonList from './components/PersonList'
+import ReactDOM from 'react-dom/client';
+
+function Get() {
+  const root = ReactDOM.createRoot(document.getElementById('users'));
+  root.render(
+  <PersonList />
+);
+}
 
 function App() {
+ 
   return (
+    <>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Button onClick={Get} variant="outlined" endIcon={<SendIcon />}>GET</Button> &nbsp;
+       <Button variant="outlined" endIcon={<SendIcon />}>POST</Button> &nbsp;
+       <Button variant="outlined" endIcon={<SendIcon />}>UPDATE</Button> &nbsp;
+       <Button variant="outlined" endIcon={<SendIcon />}>DELETE</Button> &nbsp;
     </div>
+    <br></br> <br></br>
+    </>
   );
 }
+
+
 
 export default App;
