@@ -59,7 +59,7 @@ func GetUser(name string) ([]model.User, error) {
 }
 
 func Mongo() (*mongo.Client, error) {
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb+srv://romit:romit@cluster0.sgfem.mongodb.net/test?authSource=admin&replicaSet=atlas-rse3hj-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"))
 	if err != nil {
 		return nil, err
 	}
