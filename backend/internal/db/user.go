@@ -4,6 +4,7 @@ import (
 	"context"
 	"interview/internal/model"
 	"log"
+	"os"
 	"sort"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -59,9 +60,29 @@ func GetUser(name string) ([]model.User, error) {
 }
 
 func Mongo() (*mongo.Client, error) {
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb+srv://romit:romit@cluster0.sgfem.mongodb.net/test?authSource=admin&replicaSet=atlas-rse3hj-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"))
+	mongostring := os.Getenv("ATLAS_URI")
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(mongostring))
 	if err != nil {
 		return nil, err
 	}
 	return client, nil
+}
+
+func GetAllUser() ([]model.User, error) {
+	var users []model.User
+	dbclient, err := Mongo()
+	if err != nil {
+		log.Println("error creating a client", err)
+		return nil, err
+	}
+	collection := dbclient.Database("test").Collection("user")
+	a, err := collection.Find(context.Background(), bson.M{})
+	if err != nil {
+		log.Println("error getting response from collection client", err)
+		return nil, err
+	}
+	if err = a.All(context.Background(), &users); err != nil {
+		log.Println(err)
+	}
+	return users, nil
 }

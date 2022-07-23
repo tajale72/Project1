@@ -33,6 +33,7 @@ func main() {
 	r.Use(cors.Default())
 	r.GET("/user/:name", router.GetUser)
 	r.POST("/user", router.InsertUser)
+	r.GET("/user/", router.GetAllUser)
 
 	r.Run()
 

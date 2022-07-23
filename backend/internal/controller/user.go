@@ -2,6 +2,7 @@ package controller
 
 import (
 	"encoding/json"
+	"errors"
 	"interview/internal/db"
 	"interview/internal/model"
 	"log"
@@ -21,8 +22,17 @@ func GetUser(name string) ([]model.User, error) {
 
 //GetUser function handles the business logic for getting a user.
 func InsertUser(body []byte) (*mongo.InsertOneResult, error) {
-	log.Println("Get user from db")
+	log.Println("insert user into the db")
 	var user model.User
 	json.Unmarshal(body, &user)
-	return db.InsertUser(user)
+	if user.Name == "" {
+		log.Println()
+		return nil, errors.New("please enter the name")
+	} else {
+		return db.InsertUser(user)
+	}
+}
+
+func GetAllUser() ([]model.User, error) {
+	return db.GetAllUser()
 }
