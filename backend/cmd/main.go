@@ -34,7 +34,16 @@ func main() {
 	r.GET("/user/:name", router.GetUser)
 	r.POST("/user", router.InsertUser)
 	r.GET("/user/", router.GetAllUser)
-
-	r.Run()
+	r.RunTLS(":8080", "cmd/a.cert", "cmd/a.key")
+	// cert, err := tls.LoadX509KeyPair("backend/Tajale72.pem", "backend/Tajale72.pem")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// cfg := &tls.Config{Certificates: []tls.Certificate{cert}}
+	// listener, err := tls.Listen("tcp", ":2000", cfg)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// _ = listener
 
 }
