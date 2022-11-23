@@ -33,5 +33,4 @@ func (s *Service) StoreFinancial(finance model.Finance, total float64) {
 	if err != nil {
 		log.Println("error from queryrow ", err)
 	}
-	s.InsertUser(finance, total)
 }

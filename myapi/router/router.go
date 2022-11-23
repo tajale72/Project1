@@ -41,6 +41,7 @@ func (r *Router) InitializeEndpoints(router *gin.Engine) {
 	router.GET("/verifytoken", r.Verify)
 	router.GET("/token", r.GenerateToken)
 	router.POST("/finance", r.StoreFinancial)
+	router.GET("/finance/:id", r.GetFinancial)
 
 }
 

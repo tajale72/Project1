@@ -17,6 +17,8 @@ type Service struct {
 type DatabaseInterface interface {
 	Hello() (string, error)
 	StoreFinancial(finance model.Finance, total float64)
+	InserFinancialData(finance model.Finance, total float64) (*mongo.InsertOneResult, error)
+	GetFinancial(id string) (*model.Finance, error)
 }
 
 func (s *Service) Hello() (string, error) {
