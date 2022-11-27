@@ -2,28 +2,52 @@ package router
 
 import (
 	"io/ioutil"
-	"log"
 	"net/http"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 )
 
-func (r *Router) GenerateToken(c *gin.Context) {
-	body, _ := ioutil.ReadAll(c.Request.Body)
-	res, _ := r.controllersvc.GenerateToken(body)
+//Hello is  a test function
+func (r *Router) Hello(c *gin.Context) {
+	res, err := r.controllersvc.Hello()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	}
 	c.JSON(http.StatusOK, res)
+
+}
+
+func (r *Router) GenerateToken(c *gin.Context) {
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	}
+	if len(body) == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	}
+
+	token, err := r.controllersvc.GenerateToken(body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	}
+	c.JSON(http.StatusOK, token)
 }
 
 func (r *Router) Verify(c *gin.Context) {
-	token := c.Request.Header.Get(Authorization)
-	if len(token) == 0 {
-		log.Println("error from token validation")
-		c.JSON(http.StatusBadRequest, gin.H{"error": "missing token"})
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
-
 	}
-	updatedtoken := strings.Split(token, " ")
-	res, _ := r.controllersvc.VerifyToken(updatedtoken[1])
-	c.JSON(http.StatusOK, res)
+	if len(body) == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "body is empty"})
+	}
+
+	res, err := r.controllersvc.VerifyToken(body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	} else {
+		c.JSON(http.StatusAccepted, res)
+	}
 }

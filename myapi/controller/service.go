@@ -14,7 +14,8 @@ type Service struct {
 
 type ControllerInterface interface {
 	Hello() (string, error)
-	VerifyToken(token string) (string, error)
+	VerifyToken(body []byte) (*JwtVerifyToken, error)
+	ProcessTokenBody(token_payload string) (*JwtVerifyToken, error)
 	GenerateToken(body []byte) (string, error)
 	StoreFinancial(body []byte) (*mongo.InsertOneResult, error)
 	GetFinancial(body []byte) (*model.Finance, error)

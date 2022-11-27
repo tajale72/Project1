@@ -15,6 +15,7 @@ import (
 func Mongo() (*mongo.Client, error) {
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017"))
 	if err != nil {
+		log.Println("error getting the mongo client", err.Error)
 		return nil, err
 	}
 	//s.dbclient = client
@@ -23,7 +24,6 @@ func Mongo() (*mongo.Client, error) {
 
 //InsertUser inserts data into the test database
 func (s *Service) InserFinancialData(finance model.Finance, total float64) (*mongo.InsertOneResult, error) {
-	log.Println("i am in InsertUser", finance)
 	todaysdate := time.Now().Format("01-02-2006")
 	finance.Networth = total
 	collection := s.Mongoclient.Database("test").Collection(todaysdate)
@@ -39,14 +39,12 @@ func (s *Service) InserFinancialData(finance model.Finance, total float64) (*mon
 func (s *Service) GetFinancial(id string) (*model.Finance, error) {
 	todaysdate := time.Now().Format("01-02-2006")
 	collection := s.Mongoclient.Database("test").Collection(todaysdate)
-	//res := collection.FindOne(context.Background(), bson.M{"discoveracardbalance": "2300"})
 	var user model.Finance
 	err := collection.FindOne(context.Background(), bson.M{"discoveracardbalance": 2300}).Decode(&user)
 	if err != nil {
 		log.Println("error from getting an object ", err)
 		return nil, err
 	}
-	log.Println(user)
 	return &user, nil
 
 }

@@ -1,9 +1,7 @@
 package router
 
 import (
-	"database/sql"
 	"log"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 
@@ -11,44 +9,38 @@ import (
 	"myapi/db"
 )
 
-func PostgressClient() (*sql.DB, error) {
-	conn := "host=localhost port=5432 user=romittajale dbname=finance sslmode=disable"
-	db, err := sql.Open("postgres", conn)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = db.Ping()
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Successfully connected!")
-	return db, nil
-}
-
-func (r *Router) InitializeRouter() *Router {
-	mongoclient, _ := db.Mongo()
-	d, _ := db.PostgressClient()
-
+func (r *Router) InitializeServices() *Router {
+	//Creating a monog client
+	mongoclient, err := db.Mongo()
+	Error(err)
+	//Creatng a postgres client
+	d, err := db.PostgressClient()
+	Error(err)
+	//pointing to the methods of the structs
 	db := &db.Service{Db: d, Name: "romit", Mongoclient: mongoclient}
-	r.controllersvc = &controller.Service{DB: db}
 
+	r.controllersvc = &controller.Service{DB: db}
 	return r
 }
 
-func (r *Router) InitializeEndpoints(router *gin.Engine) {
-	router.GET("/", r.Hello)
-	router.GET("/verifytoken", r.Verify)
-	router.GET("/token", r.GenerateToken)
-	router.POST("/finance", r.StoreFinancial)
-	router.GET("/finance/:id", r.GetFinancial)
+func (r *Router) InitEndpoints(auth *gin.RouterGroup) {
+	auth.GET("/", r.Hello)
+	auth.POST("/finance", r.StoreFinancial)
+	auth.GET("/finance/:id", r.GetFinancial)
 
 }
 
-func (r *Router) Hello(c *gin.Context) {
-	res, err := r.controllersvc.Hello()
+func (r *Router) InitTokenEndpoints(router *gin.Engine) {
+	router.POST("/verifytoken", r.Verify)
+	router.POST("/token", r.GenerateToken)
+
+}
+
+//Error is a function which takes in an error as a paramter and return an err
+func Error(err error) error {
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error})
+		log.Println("error from the router: " + err.Error())
+		return err
 	}
-	c.JSON(http.StatusOK, res)
+	return nil
 }

@@ -12,11 +12,9 @@ import (
 
 func (s *Service) StoreFinancial(body []byte) (*mongo.InsertOneResult, error) {
 	var finance model.Finance
-	log.Println("controller service ", string(body))
 	json.Unmarshal(body, &finance)
 	finance.Date = time.Now()
 	total := -finance.Discoveracardbalance + finance.DebitCardbalance + finance.Stockmarket_buyingpower - finance.Rent - finance.Utilities - finance.Phonebill - finance.Carinsurance - finance.WalmartGrocery
-	log.Println("controller fiannce ", finance)
 	s.DB.StoreFinancial(finance, total)
 	res, err := s.DB.InserFinancialData(finance, total)
 	if err != nil {
