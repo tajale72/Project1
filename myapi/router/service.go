@@ -29,6 +29,9 @@ func Start() {
 	log.Println("I have started")
 	var p Process
 	router := gin.Default()
+
+	router.Static("/assets", "./assets")
+	router.LoadHTMLGlob("templates/*.html")
 	//router.Use(p.JWTMiddleware)
 	p.auth = router.Group("/v1", p.JWTMiddleware)
 

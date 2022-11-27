@@ -22,5 +22,5 @@ type DatabaseInterface interface {
 }
 
 func (s *Service) Hello() (string, error) {
-	return "hello", nil
+	return "Main Website", nil
 }

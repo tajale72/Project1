@@ -13,7 +13,9 @@ func (r *Router) Hello(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
-	c.JSON(http.StatusOK, res)
+	c.HTML(http.StatusOK, "index.html", gin.H{
+		"title": res,
+	})
 
 }
 

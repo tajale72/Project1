@@ -24,13 +24,13 @@ func (r *Router) InitializeServices() *Router {
 }
 
 func (r *Router) InitEndpoints(auth *gin.RouterGroup) {
-	auth.GET("/", r.Hello)
 	auth.POST("/finance", r.StoreFinancial)
 	auth.GET("/finance/:id", r.GetFinancial)
 
 }
 
 func (r *Router) InitTokenEndpoints(router *gin.Engine) {
+	router.GET("/", r.Hello)
 	router.POST("/verifytoken", r.Verify)
 	router.POST("/token", r.GenerateToken)
 
