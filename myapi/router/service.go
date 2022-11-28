@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
 	"myapi/controller"
@@ -29,9 +30,12 @@ func Start() {
 	log.Println("I have started")
 	var p Process
 	router := gin.Default()
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	router.Use(cors.New(config))
 
-	router.Static("/assets", "./assets")
-	router.LoadHTMLGlob("templates/*.html")
+	// router.Static("/assets", "./assets")
+	// router.LoadHTMLGlob("templates/*.html")
 	//router.Use(p.JWTMiddleware)
 	p.auth = router.Group("/v1", p.JWTMiddleware)
 
