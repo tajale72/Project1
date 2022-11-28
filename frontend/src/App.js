@@ -1,17 +1,21 @@
 import './App.css';
 import Create from './components/create';
-import { BrowserRouter as Router } from 'react-router-dom'
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 function App() {
   return (
-    <Router>
+   
       <div className="main">
         <h2 className="main-header">React Crud Operations</h2>
-        <div>
-          <Create />
-        </div>
+        <BrowserRouter>
+        <Switch>
+          <Route path="/create">
+            <Create />
+          </Route>
+        </Switch>
+      </BrowserRouter>
       </div>
-    </Router>
+  
+    
   );
 }
 
