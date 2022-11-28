@@ -31,6 +31,8 @@ func (r *Router) InitEndpoints(auth *gin.RouterGroup) {
 
 func (r *Router) InitTokenEndpoints(router *gin.Engine) {
 	router.GET("/", r.Hello)
+	router.GET("/login", r.Login)
+	router.POST("/login", r.PostLogin)
 	router.POST("/verifytoken", r.Verify)
 	router.POST("/token", r.GenerateToken)
 

@@ -7,18 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//Hello is  a test function
-func (r *Router) Hello(c *gin.Context) {
-	res, err := r.controllersvc.Hello()
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	}
-	c.HTML(http.StatusOK, "index.html", gin.H{
-		"title": res,
-	})
-
-}
-
 func (r *Router) GenerateToken(c *gin.Context) {
 	body, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
