@@ -19,6 +19,12 @@ type ControllerInterface interface {
 	GenerateToken(body []byte) (string, error)
 	StoreFinancial(body []byte) (*mongo.InsertOneResult, error)
 	GetFinancial(body []byte) (*model.Finance, error)
+
+	InsertAllUsers(body []byte) (*mongo.InsertOneResult, error)
+	GetAllUsers() ([]model.User, error)
+	GetUserById(id string) (*model.User, error)
+
+	DeleteUserById(id string) (*mongo.DeleteResult, error)
 }
 
 func (s *Service) Hello() (string, error) {

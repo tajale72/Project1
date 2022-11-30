@@ -19,6 +19,11 @@ type DatabaseInterface interface {
 	StoreFinancial(finance model.Finance, total float64)
 	InserFinancialData(finance model.Finance, total float64) (*mongo.InsertOneResult, error)
 	GetFinancial(id string) (*model.Finance, error)
+
+	InsertAllUsers(users model.User) (*mongo.InsertOneResult, error)
+	GetAllUsers() ([]model.User, error)
+	GetUserById(id string) (*model.User, error)
+	DeleteUserById(id string) (*mongo.DeleteResult, error)
 }
 
 func (s *Service) Hello() (string, error) {

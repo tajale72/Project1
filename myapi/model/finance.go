@@ -15,3 +15,14 @@ type Finance struct {
 	WalmartGrocery          float64   `json:"walmart_grocery"`
 	Networth                float64   `json: "netWorth"`
 }
+
+type User struct {
+	Name  string `json:"name"`
+	Email string `json:"email"`
+	Phone string `json:"phone"`
+	Id    string `json:"id"`
+}
+
+type Users struct {
+	users []User
+}

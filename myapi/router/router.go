@@ -35,6 +35,10 @@ func (r *Router) InitTokenEndpoints(router *gin.Engine) {
 	router.POST("/login", r.PostLogin)
 	router.POST("/verifytoken", r.Verify)
 	router.POST("/token", r.GenerateToken)
+	router.GET("/user", r.GetUser)
+	router.POST("/user", r.InsertUser)
+	router.GET("/user/:id", r.GetUserById)
+	router.DELETE("/user/:id", r.DeleteUserById)
 
 }
 

@@ -45,12 +45,4 @@ func (r *Router) PostLogin(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, finance)
 	}
-
-	// var initialdata model.Finance
-	// res := finance.(map[string]interface{})
-	// //log.Println("res", res)
-	// initialdata = model.Finance{
-	// 	UserID: fmt.Sprintf("%v", res["UserID"]),
-	// }
-	// log.Println(initialdata)
 }
