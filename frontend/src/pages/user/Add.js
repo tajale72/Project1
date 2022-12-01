@@ -23,7 +23,7 @@ function Add() {
 
   function submitForm(e) {
     e.preventDefault();
-    axios.post("http://localhost:8080/user", data).then(navigate("/"))
+    axios.post("http://localhost:8080/user", data).then(navigate("/consultants"))
     .catch(error => {
       navigate("/add-user")
     })
