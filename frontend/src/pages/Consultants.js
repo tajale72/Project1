@@ -75,7 +75,7 @@ function Consultants() {
                         </td>
                         <td className="text-sm flex justify-between  items-center text-gray-900 font-bold px-6 py-4 space-x-4 whitespace-nowrap">
                           <Link
-                            to={`/users/${data.id}`}
+                            to={`/users/${data._id}`}
                             className="bg-teal-600 text-white px-2 py-2 rounded-lg"
                           >
                             VIew
@@ -87,8 +87,8 @@ function Consultants() {
                             Edit
                           </Link>
                           <Link
-                            onClick={()=>deleteUser(data.id)}
-                            to={"/"}
+                            onClick={()=>deleteUser(data._id)}
+                            to={"/consultants"}
                             className="bg-red-600 text-white px-2 py-2 rounded-lg"
                           >
                             Delete
