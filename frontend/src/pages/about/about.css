@@ -1,0 +1,14 @@
+.float-child1 {
+    float: left;
+    max-width: 70%;
+   width: 100%;
+    height: auto;
+   
+}
+
+
+.float-child2{
+    float: right;
+    max-width: 30%;
+    height: auto;
+} 

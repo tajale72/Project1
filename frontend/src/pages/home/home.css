@@ -1,0 +1,32 @@
+/* img {
+    max-width: 60%;
+    height: auto;
+} */
+
+.float-child1 {
+    float: left;
+    max-width: 70%;
+    height: auto;
+   
+}
+
+
+.float-child2{
+    float: right;
+    max-width: 30%;
+    height: auto;
+}
+
+.float-child3 {
+    float: right;
+    max-width: 70%;
+    height: auto;
+   
+}
+
+
+.float-child4{
+    float: left;
+    max-width: 30%;
+    height: auto;
+} 

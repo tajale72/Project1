@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Progressbar from './progressbar';
 import ProgressStatus from './ProgressStatus';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import './User.css'
 
 function Users() {
   const { id } = useParams();
@@ -15,45 +19,186 @@ function Users() {
     });
   }, []);
 
+  const namestyle = {
+		padding: 10,
+
+	}
+
   console.log(user);
   return (
     <>
 
       <div className="h-full w-full flex flex-col mt-32 justify-center items-center">
-        {user && (
-          <>
           <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
           <ProgressStatus/>
-         <Progressbar bgcolor="#ff00ff" progress='20'  height={50} />
+         <Progressbar bgcolor="#ff00ff" progress={user.status}  height={50} />
           </div>
-          <div className="w-[700px] h-[200] px-6 py-4 flex shadow-xl rounded-xl justify-center items-center bg-teal-600 mt-16 border-teal-800 border-2">
-            <div className="w-5/12 flex flex-col space-y-4">
-              <h2 className="text-white font-bold text-3xl border-black border-b-2">
-                Name
-              </h2>
-              <h2 className="text-white font-bold text-3xl border-black border-b-2">
-                Email
-              </h2>
-              <h2 className="text-white font-bold text-3xl border-black border-b-2">
-                Phone
-              </h2>
-            </div>
-            <div className="w-7/12 flex flex-col space-y-4  ">
-              <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
-                {user.name}
-              </h2>
-              <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
-                {user.email}
-              </h2>
-              <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
-                {user.phone}
-              </h2>
-            </div>
-          </div>
-          </>
-        )}
       </div>
-    </>
+
+      <div class="user-input">
+          <div class="column">
+          <TextField
+       style={namestyle}
+        id="input-with-icon-textfield"
+        label="Name"
+        value={user.name}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+      <TextField
+       style={namestyle}
+        id="input-with-icon-textfield"
+        label="Lastname"
+        value={user.surname}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+      <TextField
+       style={namestyle}
+        id="input-with-icon-textfield"
+        label="Email"
+        value={user.email}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+      <TextField
+       style={namestyle}
+        id="input-with-icon-textfield"
+        label="phone"
+        value={user.phone}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+      <TextField
+       style={namestyle}
+        id="input-with-icon-textfield"
+        label="Age"
+        value={user.age}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+          </div>
+          <div class="column">
+          <TextField
+        style={namestyle}
+        id="input-with-icon-textfield"
+        label="weight"
+        value={user.weight}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+       <TextField
+        style={namestyle}
+        id="input-with-icon-textfield"
+        label="maritalstatus"
+        value={user.maritalstatus}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+       <TextField
+        style={namestyle}
+        id="input-with-icon-textfield"
+        label="placeofbirth"
+        value={user.placeofbirth}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+       <TextField
+        style={namestyle}
+        id="input-with-icon-textfield"
+        label="nationality"
+        value={user.nationality}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+       <TextField
+        style={namestyle}
+        id="input-with-icon-textfield"
+        label="address"
+        value={user.address}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+         <TextField
+          style={namestyle}
+        id="input-with-icon-textfield"
+        label="sex"
+        value={user.sex}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+          </div>
+      </div>
+
+
+  
+      </>
   );
 }
 

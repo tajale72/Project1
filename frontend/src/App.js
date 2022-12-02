@@ -9,6 +9,7 @@ import Navbar from './pages/Navbar';
 import Add from './pages/user/Add';
 import Edit from './pages/user/Edit';
 import Users from './pages/user/Users';
+import InputWithIcon from './pages/InputWithIcon/InputWithIcon';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Routes>
+      <Route  path="/userinput" exact element={<InputWithIcon/>} />
       <Route  path="/finance" exact element={<Finance/>} />
      <Route  path="/bakery" exact element={<Bakery/>} />
         <Route  path="/" exact element={<Home/>} />
