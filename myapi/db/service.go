@@ -21,7 +21,7 @@ type DatabaseInterface interface {
 	GetFinancial(id string) (*model.Finance, error)
 
 	InsertAllUsers(users model.User) (*mongo.InsertOneResult, error)
-	GetAllUsers() ([]model.User, error)
+	GetAllUsers() ([]model.GetUser, error)
 	GetUserById(id string) (*model.User, error)
 	DeleteUserById(id string) (*mongo.DeleteResult, error)
 }

@@ -1,6 +1,10 @@
 package model
 
-import "time"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type Finance struct {
 	UserID                  string    `json:"user_id`
@@ -17,10 +21,34 @@ type Finance struct {
 }
 
 type User struct {
-	Name  string `json:"name"`
-	Email string `json:"email"`
-	Phone string `json:"phone"`
-	Id    string `json:"id"`
+	Surname       string `json:"surname"`
+	Name          string `json:"name"`
+	Placeofbirth  string `json:"placeofbirth"`
+	Age           string `json:"age"`
+	Weight        string `json:"weight"`
+	Nationality   string `json:"nationality"`
+	MaritalStatus string `json:"maritalstatus"`
+	Address       string `json:"address"`
+	Email         string `json:"email"`
+	Phone         string `json:"phone"`
+	Status        string `json:"status"`
+	Sex           string `json:"sex"`
+}
+
+type GetUser struct {
+	ID            primitive.ObjectID `bson:"_id" json:"_id"`
+	Surname       string             `json:"surname"`
+	Name          string             `json:"name"`
+	Placeofbirth  string             `json:"placeofbirth"`
+	Age           string             `json:"age"`
+	Weight        string             `json:"weight"`
+	Nationality   string             `json:"nationality"`
+	MaritalStatus string             `json:"maritalstatus"`
+	Address       string             `json:"address"`
+	Email         string             `json:"email"`
+	Phone         string             `json:"phone"`
+	Status        string             `json:"status"`
+	Sex           string             `json:"sex"`
 }
 
 type Users struct {

@@ -3,7 +3,6 @@ package controller
 import (
 	"encoding/json"
 	"errors"
-	"log"
 
 	"go.mongodb.org/mongo-driver/mongo"
 
@@ -16,24 +15,25 @@ func (s *Service) InsertAllUsers(body []byte) (*mongo.InsertOneResult, error) {
 	if err != nil {
 		return nil, err
 	}
-	log.Println(len(user.Id))
-	if len(user.Id) == 0 {
-		return nil, errors.New("error missing id")
-	} else {
-		log.Println("why am i here")
-		return s.DB.InsertAllUsers(user)
-	}
+
+	return s.DB.InsertAllUsers(user)
 
 }
 
-func (s *Service) GetAllUsers() ([]model.User, error) {
+func (s *Service) GetAllUsers() ([]model.GetUser, error) {
 	return s.DB.GetAllUsers()
 }
 
 func (s *Service) GetUserById(id string) (*model.User, error) {
+	if id == "" {
+		return nil, errors.New("missing id")
+	}
 	return s.DB.GetUserById(id)
 }
 
 func (s *Service) DeleteUserById(id string) (*mongo.DeleteResult, error) {
+	if id == "" {
+		return nil, errors.New("missing id")
+	}
 	return s.DB.DeleteUserById(id)
 }

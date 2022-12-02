@@ -21,7 +21,7 @@ type ControllerInterface interface {
 	GetFinancial(body []byte) (*model.Finance, error)
 
 	InsertAllUsers(body []byte) (*mongo.InsertOneResult, error)
-	GetAllUsers() ([]model.User, error)
+	GetAllUsers() ([]model.GetUser, error)
 	GetUserById(id string) (*model.User, error)
 
 	DeleteUserById(id string) (*mongo.DeleteResult, error)

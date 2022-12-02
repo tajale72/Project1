@@ -2,10 +2,13 @@ package db
 
 import (
 	"context"
+	"errors"
 	"log"
+	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive" // for BSON ObjectID
 	"go.mongodb.org/mongo-driver/mongo"
-	"gopkg.in/mgo.v2/bson"
 
 	"myapi/model"
 )
@@ -23,8 +26,8 @@ func (s *Service) InsertAllUsers(users model.User) (*mongo.InsertOneResult, erro
 }
 
 //InsertUser inserts data into the test database
-func (s *Service) GetAllUsers() ([]model.User, error) {
-	var users []model.User
+func (s *Service) GetAllUsers() ([]model.GetUser, error) {
+	var users []model.GetUser
 	collection := s.Mongoclient.Database("test").Collection("consultants")
 
 	cur, err := collection.Find(context.Background(), bson.M{})
@@ -33,12 +36,17 @@ func (s *Service) GetAllUsers() ([]model.User, error) {
 		return nil, err
 	}
 	for cur.Next(context.TODO()) {
-		var user model.User
+		var user model.GetUser
 		err := cur.Decode(&user)
 		if err != nil {
 			log.Println("error from getting single data from cur", err)
 		}
 		users = append(users, user)
+	}
+	if len(users) == 0 {
+		err := errors.New("empty collection")
+		log.Println("error from getting an object ", err)
+		return nil, err
 	}
 	return users, nil
 
@@ -47,10 +55,17 @@ func (s *Service) GetAllUsers() ([]model.User, error) {
 //InsertUser inserts data into the test database
 func (s *Service) GetUserById(id string) (*model.User, error) {
 	var user model.User
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
 	collection := s.Mongoclient.Database("test").Collection("consultants")
-	err := collection.FindOne(context.Background(), bson.M{"id": id}).Decode(&user)
+
+	objID, err := primitive.ObjectIDFromHex(id)
+
 	if err != nil {
-		log.Println("error from getting an object ", err)
+		return nil, err
+	}
+
+	err = collection.FindOne(ctx, bson.M{"_id": objID}).Decode(&user)
+	if err != nil {
 		return nil, err
 	}
 	return &user, nil
@@ -60,11 +75,19 @@ func (s *Service) GetUserById(id string) (*model.User, error) {
 //InsertUser inserts data into the test database
 func (s *Service) DeleteUserById(id string) (*mongo.DeleteResult, error) {
 	collection := s.Mongoclient.Database("test").Collection("consultants")
-	res, err := collection.DeleteOne(context.Background(), bson.M{"id": id})
+
+	objID, err := primitive.ObjectIDFromHex(id)
+
+	if err != nil {
+		return nil, err
+	}
+	log.Println(objID)
+	res, err := collection.DeleteOne(context.Background(), bson.M{"_id": objID})
 	if err != nil {
 		log.Println("error from getting an object ", err)
 		return nil, err
 	}
+
 	return res, nil
 
 }
