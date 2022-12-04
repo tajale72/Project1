@@ -5,9 +5,18 @@
    
 }
 
-
 .float-child2{
     float: right;
     max-width: 30%;
     height: auto;
 } 
+
+
+.column{
+    margin-top: 20px;
+    float: right;
+    padding: 100;
+    max-width: 30%;
+    height: auto;
+} 
+

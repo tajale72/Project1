@@ -23,7 +23,7 @@ type ControllerInterface interface {
 	InsertAllUsers(body []byte) (*mongo.InsertOneResult, error)
 	GetAllUsers() ([]model.GetUser, error)
 	GetUserById(id string) (*model.User, error)
-
+	UpdateUserById(body []byte, id string) (*mongo.UpdateResult, error)
 	DeleteUserById(id string) (*mongo.DeleteResult, error)
 }
 

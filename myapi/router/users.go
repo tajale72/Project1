@@ -14,9 +14,23 @@ func (r *Router) InsertUser(c *gin.Context) {
 	}
 	id, err := r.controllersvc.InsertAllUsers(body)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, "data not inserted")
+		c.JSON(http.StatusBadRequest, gin.H{"errors": err.Error()})
 	} else {
 		c.JSONP(http.StatusAccepted, id)
+	}
+}
+
+func (r *Router) UpdateUserById(c *gin.Context) {
+	id := c.Param("id")
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"errors": err.Error()})
+	}
+	res, err := r.controllersvc.UpdateUserById(body, id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"errors": err.Error()})
+	} else {
+		c.JSONP(http.StatusAccepted, res)
 	}
 }
 

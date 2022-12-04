@@ -31,7 +31,7 @@ type User struct {
 	Address       string `json:"address"`
 	Email         string `json:"email"`
 	Phone         string `json:"phone"`
-	Status        string `json:"status"`
+	Status        int    `json:"status"`
 	Sex           string `json:"sex"`
 }
 
@@ -47,7 +47,7 @@ type GetUser struct {
 	Address       string             `json:"address"`
 	Email         string             `json:"email"`
 	Phone         string             `json:"phone"`
-	Status        string             `json:"status"`
+	Status        int                `json:"status"`
 	Sex           string             `json:"sex"`
 }
 

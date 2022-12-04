@@ -6,7 +6,12 @@ import ProgressStatus from './ProgressStatus';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import SendIcon from '@mui/icons-material/Send';
+import Button from '@mui/material/Button';
 import './User.css'
+
+import testimage from './client1.jpg'
+import { Upload } from "@mui/icons-material";
 
 function Users() {
   const { id } = useParams();
@@ -21,7 +26,6 @@ function Users() {
 
   const namestyle = {
 		padding: 10,
-
 	}
 
   console.log(user);
@@ -195,6 +199,21 @@ function Users() {
       />
           </div>
       </div>
+
+    <div>
+      <img src="http://localhost:3000/static/media/client1.5979b53460bc3716bdfa.jpg"></img>
+
+    </div>
+
+
+<div>
+<Button 
+      variant="outlined" 
+      endIcon={<SendIcon />}>
+      Continue
+      </Button>
+</div>
+    
 
 
   

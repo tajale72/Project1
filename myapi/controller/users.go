@@ -20,6 +20,17 @@ func (s *Service) InsertAllUsers(body []byte) (*mongo.InsertOneResult, error) {
 
 }
 
+func (s *Service) UpdateUserById(body []byte, id string) (*mongo.UpdateResult, error) {
+	var user model.User
+	err := json.Unmarshal(body, &user)
+	if err != nil {
+		return nil, err
+	}
+
+	return s.DB.UpdateUserById(user, id)
+
+}
+
 func (s *Service) GetAllUsers() ([]model.GetUser, error) {
 	return s.DB.GetAllUsers()
 }

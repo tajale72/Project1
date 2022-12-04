@@ -34,8 +34,8 @@ func Start() {
 	config.AllowAllOrigins = true
 	router.Use(cors.New(config))
 
-	// router.Static("/assets", "./assets")
-	// router.LoadHTMLGlob("templates/*.html")
+	router.Static("/assets", "./assets")
+	router.LoadHTMLGlob("templates/*.html")
 	//router.Use(p.JWTMiddleware)
 	p.auth = router.Group("/v1", p.JWTMiddleware)
 

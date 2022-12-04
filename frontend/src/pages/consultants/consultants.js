@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import DataGridDemo from "./datagriddemo/datagriddemo";
 
 
 function Consultants() {
@@ -23,10 +22,9 @@ function Consultants() {
 
   return (
     <>
-Hello
-    <DataGridDemo/>
-      <div className="w-[100vw] h-full justify-center items-center flex flex-col px-10 py-8 mt-8">
-        <h1 className="text-3xl ">Consultants</h1>
+    <h1></h1>
+      <div className=" h-full justify-center items-center flex flex-col px-10 py-8 mt-20">
+        <h1> Consultants</h1>
         <div className="flex flex-col">
           <div className="overflow-x-auto mt-4 sm:-mx-4 items-center lg:-mx-8">
             <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">

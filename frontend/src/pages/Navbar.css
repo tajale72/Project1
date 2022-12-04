@@ -1,7 +1,19 @@
-.link {
+.navlink {
     color: black;
+    display: inline;
   }
   .link:hover {
      color: #00F;
      border-color : light;
   }
+
+.logo img{
+    margin-top: 100px;
+    margin-left: 80px;
+    width : 40%;
+}
+
+h1 {
+    font-size: 20px;
+}
+

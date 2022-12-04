@@ -39,6 +39,7 @@ func (r *Router) InitTokenEndpoints(router *gin.Engine) {
 	router.POST("/user", r.InsertUser)
 	router.GET("/user/:id", r.GetUserById)
 	router.DELETE("/user/:id", r.DeleteUserById)
+	router.PATCH("/user/:id", r.UpdateUserById)
 
 }
 

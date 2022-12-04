@@ -26,6 +26,26 @@ func (s *Service) InsertAllUsers(users model.User) (*mongo.InsertOneResult, erro
 }
 
 //InsertUser inserts data into the test database
+func (s *Service) UpdateUserById(users model.User, id string) (*mongo.UpdateResult, error) {
+
+	collection := s.Mongoclient.Database("test").Collection("consultants")
+	objID, err := primitive.ObjectIDFromHex(id)
+
+	res, err := collection.UpdateOne(
+		context.Background(),
+		bson.M{"_id": objID},
+		bson.D{
+			{"$set", users},
+		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return res, nil
+
+}
+
+//InsertUser inserts data into the test database
 func (s *Service) GetAllUsers() ([]model.GetUser, error) {
 	var users []model.GetUser
 	collection := s.Mongoclient.Database("test").Collection("consultants")
@@ -67,6 +87,9 @@ func (s *Service) GetUserById(id string) (*model.User, error) {
 	err = collection.FindOne(ctx, bson.M{"_id": objID}).Decode(&user)
 	if err != nil {
 		return nil, err
+	}
+	if user.Status == 0 {
+		user.Status = 25
 	}
 	return &user, nil
 
