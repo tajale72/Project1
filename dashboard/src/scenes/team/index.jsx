@@ -6,10 +6,17 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import {useEffect , useState} from 'react';
+import axios from 'axios';
+
+
 
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+
+
   const columns = [
     { field: "id", headerName: "ID" },
     {
@@ -68,9 +75,34 @@ const Team = () => {
     },
   ];
 
+
+  const [data, setData] = useState([]);
+
+  const getConsultantsData = async() => {
+    await axios.get("http://localhost:8080/user").then((res) =>{
+      setData(res.data.reverse());
+    })
+  }
+
+  useEffect(() => {
+    getConsultantsData();
+  }, []);
+
+
+    const rows = data.map((row) => ({
+      id : row._id,
+      name : row.name,
+      phone : row.phone,
+      age : row.age,
+      email : row.email,
+      access: "user",
+    }));
+  
+  
+
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="Employees" subtitle="List of Employees" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -100,7 +132,7 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid checkboxSelection rows={rows} columns={columns} />
       </Box>
     </Box>
   );

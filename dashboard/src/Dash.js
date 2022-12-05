@@ -16,11 +16,15 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
 
-function App() {
+
+
+function Dash() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
   return (
+<>
+
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -29,8 +33,7 @@ function App() {
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
-              
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
@@ -46,7 +49,11 @@ function App() {
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
+    </>
   );
+
 }
 
-export default App;
+
+
+export default Dash;
