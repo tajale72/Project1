@@ -3,6 +3,7 @@ package controller
 import (
 	"encoding/json"
 	"errors"
+	"log"
 
 	"go.mongodb.org/mongo-driver/mongo"
 
@@ -12,10 +13,11 @@ import (
 func (s *Service) InsertAllUsers(body []byte) (*mongo.InsertOneResult, error) {
 	var user model.User
 	err := json.Unmarshal(body, &user)
+	user.FirstName = EncrytionService(user.FirstName)
 	if err != nil {
 		return nil, err
 	}
-
+	log.Println(user.FirstName)
 	return s.DB.InsertAllUsers(user)
 
 }

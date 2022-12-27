@@ -21,11 +21,10 @@ type Finance struct {
 }
 
 type User struct {
-	Surname       string `json:"surname"`
-	Name          string `json:"name"`
+	FirstName     string `json:"firstname"`
+	LastName      string `json:"lastname"`
 	Placeofbirth  string `json:"placeofbirth"`
 	Age           string `json:"age"`
-	Weight        string `json:"weight"`
 	Nationality   string `json:"nationality"`
 	MaritalStatus string `json:"maritalstatus"`
 	Address       string `json:"address"`
@@ -37,11 +36,10 @@ type User struct {
 
 type GetUser struct {
 	ID            primitive.ObjectID `bson:"_id" json:"_id"`
-	Surname       string             `json:"surname"`
-	Name          string             `json:"name"`
+	LastName      string             `json:"lastname"`
+	FirstName     string             `json:"firstname"`
 	Placeofbirth  string             `json:"placeofbirth"`
 	Age           string             `json:"age"`
-	Weight        string             `json:"weight"`
 	Nationality   string             `json:"nationality"`
 	MaritalStatus string             `json:"maritalstatus"`
 	Address       string             `json:"address"`

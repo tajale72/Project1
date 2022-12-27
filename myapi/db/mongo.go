@@ -18,6 +18,11 @@ func Mongo() (*mongo.Client, error) {
 		log.Println("error getting the mongo client", err.Error)
 		return nil, err
 	}
+	err = client.Ping(context.Background(), nil)
+	if err != nil {
+		return nil, err
+	}
+	log.Println("Connected to mongo dbß")
 	//s.dbclient = client
 	return client, nil
 }
