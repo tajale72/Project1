@@ -1,0 +1,86 @@
+<mxfile host="65bd71144e">
+    <diagram id="rniU3fUDPHh5TSe7iJC5" name="Page-1">
+        <mxGraphModel dx="3664" dy="4352" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="18" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Vastika users" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-240" y="240" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" style="edgeStyle=none;html=1;" edge="1" parent="1" source="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1550" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="-admin&lt;br&gt;-marketer&lt;br&gt;-accounttant&lt;br&gt;-manager&lt;br&gt;-vendorcall&lt;br&gt;-consultants" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="-30" width="670" height="670" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Features for admin&lt;br&gt;1. List of consultants&lt;br&gt;2. Being able to click on the list of the consultants to view consultant profile.&lt;br&gt;3.Able to delete the users from the list&lt;br&gt;4. Role base access control" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="1560" y="-381" width="450" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;" edge="1" parent="1" source="14">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="420" y="275" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="Authentication&amp;nbsp;&lt;br&gt;Authorization" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="245" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="Features for admin&lt;br&gt;1. List of consultants&lt;br&gt;2. Being able to click on the list of the consultants to view consultant profile.&lt;br&gt;3.Able to delete the users from the list&lt;br&gt;4. Role base access control" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="1560" y="150" width="450" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Features for admin&lt;br&gt;1. List of consultants&lt;br&gt;2. Being able to click on the list of the consultants to view consultant profile.&lt;br&gt;3.Able to delete the users from the list&lt;br&gt;4. Role base access control" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="1570" y="720" width="450" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Features for admin&lt;br&gt;1. List of consultants&lt;br&gt;2. Being able to click on the list of the consultants to view consultant profile.&lt;br&gt;3.Able to delete the users from the list&lt;br&gt;4. Role base access control" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="1550" y="-950" width="450" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Features for admin&lt;br&gt;1. List of consultants&lt;br&gt;2. Being able to click on the list of the consultants to view consultant profile.&lt;br&gt;3.Able to delete the users from the list&lt;br&gt;4. Role base access control" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="1570" y="1290" width="450" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Features for admin&lt;br&gt;1. List of consultants&lt;br&gt;2. Being able to click on the list of the consultants to view consultant profile.&lt;br&gt;3.Able to delete the users from the list&lt;br&gt;4. Role base access control" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="1560" y="-1470" width="450" height="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=none;html=1;entryX=-0.01;entryY=0.534;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="28">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1560" y="310" as="targetPoint"/>
+                        <mxPoint x="1105" y="312.87974683544326" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" style="edgeStyle=none;html=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1565" y="1487.12" as="targetPoint"/>
+                        <mxPoint x="1120" y="329.99974683544326" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=none;html=1;entryX=0.004;entryY=0.639;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1580" y="330" as="targetPoint"/>
+                        <mxPoint x="1125" y="332.87974683544326" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="1100" y="300"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=none;html=1;entryX=-0.005;entryY=0.672;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="10">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1590" y="340" as="targetPoint"/>
+                        <mxPoint x="1135" y="342.87974683544326" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="1100" y="310"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=none;html=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1570" y="797.12" as="targetPoint"/>
+                        <mxPoint x="1110" y="310" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
