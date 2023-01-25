@@ -26,7 +26,7 @@ function App() {
         <Route  path="/consultants" exact element={<Consultants/>} />
         <Route  path="/about" exact element={<About/>} />
         <Route  path="/users/:id" exact element={<Users/>} />
-        <Route  path="/add-user" exact element={<Add/>} />
+        <Route  path="/createaccount" exact element={<Add/>} />
         <Route  path="/edit-user/:id" exact element={<Edit/>} />
       </Routes>
     </div>

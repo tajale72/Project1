@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Application</title>
+</head>
+<body>
+    <div id="chat">
+        <div id="messages"></div>
+        <input type="text" id="message" placeholder="Enter your message here...">
+        <button id="send">Send</button>
+    </div>
+
+    <script>
+        // Connect to the WebSocket server
+        var socket = new WebSocket("ws://localhost:8000/ws");
+
+        // Send a message when the "Send" button is clicked
+        document.getElementById("send").addEventListener("click", function(){
+            var message = document.getElementById("message").value;
+            var email = "{{.Email}}";
+            var username = "{{.Username}}";
+socket.send(JSON.stringify({Email: email, Username: username, Message: message}));
+document.getElementById("message").value = "";
+});
+
+

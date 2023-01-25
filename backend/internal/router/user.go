@@ -1,12 +1,13 @@
 package router
 
 import (
-	controller "interview/internal/controller"
 	"io/ioutil"
 	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
+	controller "interview/internal/controller"
 )
 
 func GetUser(c *gin.Context) {

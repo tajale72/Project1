@@ -91,7 +91,7 @@ const Team = () => {
 
     const rows = data.map((row) => ({
       id : row._id,
-      name : row.name,
+      name : row.firstname,
       phone : row.phone,
       age : row.age,
       email : row.email,
