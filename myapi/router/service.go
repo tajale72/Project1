@@ -71,15 +71,6 @@ func (p *Process) JWTMiddleware(c *gin.Context) {
 			c.AbortWithStatus(http.StatusUnauthorized)
 		}
 	}
-	// var wg sync.WaitGroup
-	// wg.Add(1)
-	// val := p.Test(token)
-	// var err error
-	// if !val {
-	// 	log.Println(val)
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// }
-
 }
 
 func (p *Process) Test(token string) bool {

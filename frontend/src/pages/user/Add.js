@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ImageUploader from "../uploadimage/uploadimage";
 import UploadImage from "../uploadimage/uploadimage";
 
 function Add() {
@@ -125,7 +126,7 @@ function Add() {
           type="sex"
           placeholder="sex"
         />
-         <UploadImage/>
+         <ImageUploader/>
         
         <button
           className="bg-teal-600 outline-none font-bold border text-white border-zinc-400 py-4 pl-4 mt-4"

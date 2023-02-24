@@ -41,6 +41,8 @@ func (r *Router) InitTokenEndpoints(router *gin.Engine) {
 	router.DELETE("/user/:id", r.DeleteUserById)
 	router.PATCH("/user/:id", r.UpdateUserById)
 
+	router.POST("/upload", r.ImageUploader)
+
 }
 
 //Error is a function which takes in an error as a paramter and return an err

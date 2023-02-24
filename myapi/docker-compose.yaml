@@ -1,0 +1,12 @@
+version: '3'
+services:
+  my-microservice:
+    image: myapi:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - GIN_MODE=release
+    command: ["./my-microservice"]
+    working_dir: /app
+    volumes:
+      - ./my-microservice:/app

@@ -1,30 +1,41 @@
-import React from 'react';
-import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const UploadImage = () => {
+function ImageUploader() {
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-	const hiddenFileInput = React.useRef(null);
-  
-  const handleClick = event => {
-    hiddenFileInput.current.click();
+  const handleChange = (event) => {
+    setImage(event.target.files[0]);
   };
-  const handleChange = event => {
-    const fileUploaded = event.target.files[0];
-    console.log("filiuploaded", fileUploaded)
-   // props.handleFile(fileUploaded);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("image", image);
+    try {
+      await axios.post('http://localhost:8080/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      alert('Image uploaded successfully!');
+    } catch (err) {
+      console.error(err);
+      alert('Error uploading image.');
+    }
+    setLoading(false);
   };
+
   return (
-    <>
-      <Button onClick={handleClick}>
-        Upload a file
-      </Button>
-      <input type="file"
-             ref={hiddenFileInput}
-             onChange={handleChange}
-             style={{display:'none'}} 
-      /> 
-    </>
-);
+    <form onSubmit={handleSubmit}>
+      <input type="file" onChange={handleChange} />
+      <button type="submit" disabled={loading}>
+        Upload
+      </button>
+    </form>
+  );
 }
 
-export default UploadImage;
+export default ImageUploader;
