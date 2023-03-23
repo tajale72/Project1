@@ -40,22 +40,19 @@ func main() {
 }
 
 func QuickSort(arr []int) []int {
-	n := len(arr)
 
-	if n <= 1 {
+	if len(arr) <= 0 {
 		return arr
 	}
 
 	pi := arr[0]
-
 	var left, right []int
 
 	for i := 1; i < len(arr); i++ {
-		v := arr[i]
-		if v < pi {
-			left = append(left, v)
+		if pi > arr[i] {
+			left = append(left, arr[i])
 		} else {
-			right = append(right, v)
+			right = append(right, arr[i])
 		}
 	}
 
