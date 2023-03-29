@@ -15,5 +15,14 @@ func main() {
 	fmt.Println("Sorted D: ", a.MergeSort(arr))
 	fmt.Println("Sorted E: ", a.Test1Bubblesort1(arr))
 	fmt.Println("Sorted F: ", a.MerSortTest(arr))
-	fmt.Println("Sorted F: ", a.
+	var s a.Stack
+	s.Push(1)
+	s.Push(2)
+	s.Push(3)
+	fmt.Println("Valuse os Stack s x: ", s)
+	s.Pop()
+	s.Pop()
+
+	fmt.Println("Valuse os Stack s x: ", s)
+
 }
