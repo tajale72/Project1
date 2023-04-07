@@ -40,13 +40,9 @@ I have migrated legacy code and integrated with third-party applications using A
 //BMO Harris
 I worked as a backend java  developer, 
 i worked on Payment transfer service
-We had multiple accounts with multiple business logics
-We would send the payload to fraud checking to accounts,  based on that response we process the data that we receive based  on the data, we store the transaction into our DB(DB2)
-If the accounts get suspended,
-Testing tool:
+I was working on fraud checking for different types of accounts to accounts,based on that response we process the data that we receive based  on the data, we store the transaction into our DB(DB2)
 Involved in migrating multiple services from SOAP to REST API
 Logging : LOG4j 
-Conucrrency : Thread 
 Sprintboot for building REST api
 
 
