@@ -1,30 +1,77 @@
 package main
 
 import (
+	"fmt"
 	"log"
-
-	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"os"
+	"sync"
+	"time"
 )
 
-type Game struct{}
-
-func (g *Game) Update() error {
-	return nil
-}
-
-func (g *Game) Draw(screen *ebiten.Image) {
-	ebitenutil.DebugPrint(screen, "Hello, World!")
-}
-
-func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return 320, 240
-}
+var elapsed time.Duration
+var wg sync.WaitGroup
 
 func main() {
-	ebiten.SetWindowSize(640, 480)
-	ebiten.SetWindowTitle("Hello, World!")
-	if err := ebiten.RunGame(&Game{}); err != nil {
-		log.Fatal(err)
+
+	var c Coffee
+	num := 5
+	wg.Add(num)
+	for i := 0; i < num; i++ {
+		go c.CoffeMaker(i)
 	}
+	wg.Wait()
+
+	fmt.Println("Total time it took to create", num, "coffee:", elapsed.String())
+
+}
+
+type CoffeMethods interface {
+	CoffeMaker(i int) string
+	grindCoffee(grinder string) string
+	makeEspresso(espressoMachine, grounds string)
+	steamMilk(steamer string) string
+	makeLatte(coffee, milk string)
+}
+
+type Coffee struct {
+	logger          *log.Logger
+	grinder         string
+	espressoMachine string
+	steamer         string
+}
+
+func (c *Coffee) CoffeMaker(i int) {
+	c.logger = log.New(os.Stdout, fmt.Sprintf("coffee %d: ", i), log.LstdFlags|log.Lshortfile)
+	c.logger.Println("Starting coffee making process")
+	start := time.Now()
+	grounds := c.grindCoffee(c.grinder)
+	coffee := c.makeEspresso(c.espressoMachine, grounds)
+	milk := c.steamMilk(c.steamer)
+	c.makeLatte(coffee, milk)
+	elapsed = time.Since(start)
+
+	defer wg.Done()
+}
+
+func (c *Coffee) grindCoffee(grinder string) string {
+	c.logger.Println("Grinding the coffee")
+	time.Sleep(1 * time.Second)
+	return grinder
+}
+
+func (c *Coffee) makeEspresso(espressoMachine, grounds string) string {
+	c.logger.Println("Making Espresso")
+	time.Sleep(1 * time.Second)
+	return espressoMachine + grounds
+}
+
+func (c *Coffee) steamMilk(steamer string) string {
+	c.logger.Println("Steaming the milk")
+	time.Sleep(1 * time.Second)
+	return steamer
+}
+
+func (c *Coffee) makeLatte(coffee, milk string) {
+	c.logger.Println("Making the latte")
+	time.Sleep(1 * time.Second)
 }
